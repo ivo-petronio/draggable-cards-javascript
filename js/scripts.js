@@ -1,4 +1,4 @@
-const container = document.querySelectorAll(".container");
+const boards = document.querySelectorAll(".board");
 
 document.addEventListener("dragstart", (e) => {
     e.target.classList.add("dragging");
@@ -8,13 +8,15 @@ document.addEventListener("dragend", (e) => {
     e.target.classList.remove("dragging");
 });
 
-container.forEach((item) => {
+boards.forEach((item) => {
+    console.log(item);
     item.addEventListener("dragover", (e) => {
+        console.log(e);
         const dragging = document.querySelector(".dragging");
         const applyAfter = getNewPosition(item, e.clientY);
 
         if(applyAfter) {
-            applyAfer.insertAdjacentElement("afterend", dragging);
+            applyAfter.insertAdjacentElement("afterend", dragging);
         } else {
             item.prepend(dragging);
         }
